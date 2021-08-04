@@ -1,11 +1,7 @@
-* Firefox Vertical Tabs
+My copy of @ranmaru22 's Firefox Vertical Tabs
 Vertical tabs for Firefox, inspired by Edge.
-
 Works with Light theme, Dark theme, and System theme (auto dark mode).
-There are some minor glitches with Alpenglow, but they should be easy to fix.
-
 It also plays nice with Container Tabs.
-
 ** Screenshots
 [[./screenshots/dark1.png]]
 
@@ -18,8 +14,7 @@ It also plays nice with Container Tabs.
 ** Compatibility
 Compatible with Firefox 90.
 
-I have only tested this for Linux and macOS. There might be some bugs on Windows because the window decorations look different.
-I can't test this because I don't have a Windows computer, but if you find any bugs and know how to fix it, feel free to submit a PR.
+Tested for Linux and Windows with titlebar on the right.
 
 ** How to install
 - Go to =about:config= in your URL bar, search for ~toolkit.legacyUserProfileCustomizations.stylesheets~ and set it to ~true~.
