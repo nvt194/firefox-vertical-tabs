@@ -1,7 +1,9 @@
 My copy of @ranmaru22 's Firefox Vertical Tabs
+
 Vertical tabs for Firefox, inspired by Edge.
 Works with Light theme, Dark theme, and System theme (auto dark mode).
 It also plays nice with Container Tabs.
+
 ** Screenshots
 [[./screenshots/dark1.png]]
 
