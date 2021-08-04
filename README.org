@@ -5,13 +5,13 @@ Works with Light theme, Dark theme, and System theme (auto dark mode).
 It also plays nice with Container Tabs.
 
 ** Screenshots
-[[./screenshots/dark1.png]]
+[[./screenshots/windows1.png]]
 
-[[./screenshots/dark2.png]]
+[[./screenshots/windows2.png]]
 
-[[./screenshots/light1.png]]
+[[./screenshots/linux1.png]]
 
-[[./screenshots/light2.png]]
+[[./screenshots/linux2.png]]
 
 ** Compatibility
 Compatible with Firefox 90.Tested for Linux and Windows with titlebar on the right.
