@@ -53,8 +53,9 @@
     }
 }
 
+
 /* Windows specific styles, delete to use with Linux */ 
-@media (-moz-os-version: windows-win10) { 
+@media (-moz-platform: windows-win10) { 
   /* Hide main tabs toolbar */
   :root[tabsintitlebar]{
         --uc-window-control-width: 138px; /* Space at the right of nav-bar for window controls */
@@ -110,11 +111,11 @@
         margin-left: var(--uc-window-drag-space-width,0px);
     }
 
-
   :root[inFullscreen] #nav-bar {
         border-inline: none !important;
     }
 }
+
 
 /* General styles */
 #browser {
@@ -198,6 +199,7 @@
       display: none !important;
   }
 }
+
 
 /* Add back menu icons, read more: https://www.reddit.com/r/FirefoxCSS/comments/osles3/menu_icons/ */ 
 .subviewbutton:not(.subviewbutton-iconic, [checked="true"], [targetURI]) > .toolbarbutton-icon {
