@@ -2,15 +2,17 @@
   /* delay before expanding tabs, set to '0' for no delay */
   --delay: 0.5s;
   --transition-time: 0.2s;
+  --positionX1: 48px; /* '48px' for left, '0px' for right sidebar */
+  --positionX2: absolute; /* 'absolute' for left, 'none' for right sidebar */
 }
 
-/* macOS specific styles,delete to use with Windows */
+/* macOS specific styles */
 @media (-moz-platform: macos) {
   #TabsToolbar:not([customizing="true"]) {
       visibility: collapse !important;
   }
 
-  :root:not([customizing="true"]) #nav-bar {
+  :root:not([customizing="true"]) #nav-bar:not([inFullscreen]) {
       padding-left: 80px;
   }
 
@@ -119,16 +121,16 @@
   }
 }
 
-/* Windows specific styles, delete to use with Linux */ 
+/* Windows specific styles */
 @media (-moz-platform: windows-win10) {
   /* Hide main tabs toolbar */
   :root[tabsintitlebar]{
-      --uc-window-control-width: 105px; /* Space at the right of nav-bar for window controls */
+      --uc-window-control-width: 137px; /* Space at the right of nav-bar for window controls */
       /* --uc-window-drag-space-width: 24px; */  /* To add extra window drag space in nav-bar */
   }
 
   #nav-bar{
-      border-inline: var(--uc-window-drag-space-width,0px) solid var(--toolbar-bgcolor) ;
+      border-inline: var(--uc-window-drag-space-width,80px) solid var(--toolbar-bgcolor) ;
       border-inline-style: solid !important;
       border-right-width: calc(var(--uc-window-control-width,0px) + var(--uc-window-drag-space-width,0px));
 
@@ -234,7 +236,7 @@
 
 #sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]) {
   display: block;
-  position: absolute;
+  position: var(--positionX2);
   box-sizing: content-box;
   min-width: 48px;
   max-width: 48px;
@@ -243,6 +245,11 @@
   z-index: 1;
   top: 0;
   bottom: 0;
+}
+
+#main-window[inFullscreen] #sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]) {
+  min-width: 1px;
+  max-width: 1px;
 }
 
 #sidebar-box[sidebarcommand*="tabcenter"]:hover #sidebar,
@@ -276,8 +283,8 @@
   height: 100%;
 }
 
-#sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]) ~ #appcontent {
-  margin-left: 48px;
+#main-window:not([inFullscreen]) #sidebar-box[sidebarcommand*="tabcenter"]:not([hidden]) ~ #appcontent {
+  margin-left: var(--positionX1);
 }
 
 #main-window[inFullscreen][inDOMFullscreen] #appcontent {
