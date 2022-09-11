@@ -1,10 +1,9 @@
+
 /* Overwrite some colours */
 :root {
     --tab-separator: transparent;
     --tab-selected-line: transparent;
     --tablist-separator: #cccccc;
-    /* fix scrolling bug when collapsed */
-    overflow: hidden;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,6 +27,12 @@
     }
 }
 
+/* fix autoscrolling bug when middle clicking */
+:root,
+body {
+    overflow: hidden;
+}
+
 /* Move topmenu to bottom */
 #topmenu {
     order: 2;
@@ -43,15 +48,11 @@
     margin-right: 2px;
 }
 
-/* Hide filterbox */
+/* Hide filterbox & settings icon */
 #filterbox-icon,
-#filterbox-input {
-    display: none;
-}
-
-/* Right-align settings icon */
+#filterbox-input,
 #settings {
-    margin-left: auto;
+    display: none;
 }
 
 #tablist-wrapper {
@@ -75,13 +76,12 @@
 
 #newtab {
     flex-grow: 1;
-    margin-right: 4px;
+    margin-right: 2px;
     margin-left: 2px;
     padding-left: 9px;
     min-width: 36px;
     width: 100%;
 }
-
 
 .tab,
 .tab.active {
@@ -131,7 +131,7 @@
         padding-left: 25px;
         transition: all 0.2s ease;
     }
-}    
+}
 
 
 /*** Move container indicators to left ***/
@@ -195,4 +195,71 @@
     #settings {
         visibility: hidden !important;
     }
+}
+
+
+/*** Better support for non-compact mode ***/
+#tablist-wrapper:not(.shrinked) .tab-meta-image {
+    display: flex;
+    align-items: center;
+
+    width: 58px;
+    border: 0 !important;
+    margin-right: 4px;
+    border-radius: inherit;
+    background-position: center;
+    min-width: 0px !important;
+    background-color: var(--toolbar-background) !important;
+    transition: margin .4s;
+}
+#tablist-wrapper:not(.shrinked) .tab-icon-wrapper {
+    transition: margin .1s;
+    z-index: 2;
+}
+#tablist-wrapper:not(.shrinked) .tab-icon-overlay {
+    top: unset !important;
+    bottom: 8px;
+    left: 25px !important;
+    z-index: 4;
+    transition: inset .1s;
+}
+
+/* If you want to disable the website previews,
+comment out the @media line below and its closing bracket */
+@media (max-width: 49px) {
+    #tablist-wrapper:not(.shrinked) .tab-meta-image {
+        background-color: inherit !important;
+        border-width: 0 !important;
+        box-shadow: none !important;
+        height: 0 !important;
+        width: 26px;
+        margin-right: 0px;
+    }
+    #tablist-wrapper:not(.shrinked) .tab-icon-wrapper {
+        background-color: transparent !important;
+        margin-top: 0 !important;
+        margin-left: 3px !important;
+        box-shadow: none !important;
+    }
+    #tablist-wrapper:not(.shrinked) .tab-icon-overlay {
+        bottom: 12px;
+        left: 16px !important;
+    }
+}
+
+/* middle click newtab workaround */
+
+/* allows the #spacer element to take up more space */
+#spacer {
+    min-height: 100vh;
+}
+
+/* moves the new tab button to the original position */
+#tablist-wrapper {
+    margin-bottom: -100vh;
+}
+
+/* moves the new tab button separator to the original position */
+#tablist-wrapper::after {
+    transform: translateY(-100vh);
 }
