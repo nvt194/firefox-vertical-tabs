@@ -119,6 +119,14 @@
           }
       }
   }
+  
+  /* Hide window buttons in fullscreen */
+  #navigator-toolbox[style*="margin-top: -"] .titlebar-buttonbox-container,
+  [inDOMFullscreen="true"] .titlebar-buttonbox-container {
+      transform: translateY(-100px)
+  }
+  
+  
 }
 
 /* Windows specific styles */
@@ -134,9 +142,29 @@
       border-inline-style: solid !important;
       border-right-width: calc(var(--uc-window-control-width,0px) + var(--uc-window-drag-space-width,0px));
 
-      padding-top: 0px !important;
+      padding-top: .5px !important; /* This makes it possible to drag the maximized window. */
       margin-left: -80px; /* Removes the space left when hiding .titlebar-buttonbox-container */
   }
+  
+  #back-button { 
+  margin-top: -.5px !important; 
+}
+
+#forward-button { 
+  margin-top: -.5px !important; 
+}
+
+#reload-button { 
+  margin-top: -.5px !important; 
+}
+  
+#PanelUI-button {
+  margin-top: -.5px !important; 
+}
+  
+#nav-bar-overflow-button{
+  margin-top: -.5px !important; 
+}
 
   :root {
       --uc-toolbar-height: 32px;
@@ -172,13 +200,14 @@
       position: relative;
   }
 
+  /* For a rounded button design, uncomment both lines in .titlebar-buttonbox. */
   .titlebar-buttonbox {
       z-index:3 !important;
-      padding-right:3px;
+      /* padding-right:3px; */
   }
 
   .titlebar-buttonbox * {
-      border-radius: 5px;
+      /* border-radius: 5px; */
       width:35px;
       height:38px;
   }
@@ -257,7 +286,7 @@
   min-width: 10vw !important;
   width: 30vw !important;
   max-width: 200px !important;
-  z-index: 10 !important;
+  z-index: 1 !important;
   transition: all var(--transition-time) ease var(--delay);
 }
 

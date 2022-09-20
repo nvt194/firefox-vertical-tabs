@@ -1,8 +1,9 @@
 My copy of @ranmaru22 's Firefox Vertical Tabs, with few tweaks for my liking.
 
-Vertical tabs for Firefox, inspired by Edge.
-Works with Light theme, Dark theme, and System theme (auto dark mode).
-It also plays nice with Container Tabs.
+* Firefox Vertical Tabs
+Vertical tabs for Firefox, inspired by Edge. Works with Light theme, Dark theme,
+and System theme (auto dark mode). There are some minor glitches with Alpenglow
+but they should be easy to fix.
 
 ** Screenshots
 [[./screenshots/windows1.png]]
@@ -14,7 +15,14 @@ It also plays nice with Container Tabs.
 [[./screenshots/linux2.png]]
 
 ** Compatibility
-Compatible with Firefox 90.Tested for Macos and Windows.
+*Guarateed compatibility with Firefox 104.*
+There has recently been in change in Firefox that requires the use of
+~-moz-platform~ instead of ~-moz-os-version~ to use OS-specific CSS. This will work
+from 99.0b1 upwards but might not on older versions, so be aware of that. If you
+run an older version of Firefox and have an issue, change this back.
+
+(Also, since the only OS-specific CSS in the file targets Windows, it should not
+affect you on Mac or Linux either way.)
 
 ** How to install
 - Go to ~about:config~ in your URL bar, search for
@@ -32,9 +40,16 @@ Compatible with Firefox 90.Tested for Macos and Windows.
   *Preferences* and set:
   - *Animations*: on.
   - *Use current browser theme*: on, if you want to use dark mode.
-  - *Compact Mode*: either /"Dynamic"/ or /"Enabled"/. It works with /"Disabled"/ too
+  - *Compact Mode*: either "Dynamic" or "Enabled". It works with "Disabled" too
     but looks nicer with only favicons.
   - *Favicon-only pinned tabs*: off.
   - Activate *Custom Stylesheet* and paste the contents of ~tabCenterReborn.css~
-    into the text area below, and click /"Save CSS"/ under the text box.
-- Restart Firefox.    
+    into the text area below, and click "Save CSS" under the text box. 
+
+** Things to note
+- If the sidebar does not show up, you can press =Shitft-F1= to show the Tab
+  Center Reborn sidebar directy, or =Cmd-B= / =Ctrl-B= to toggle the sidebar in
+  general.
+- In Fullscreen mode, the sidebar will collapse to a 1px wide border instead to
+  be as unintrusive as possible. You can expand it by pushing your cursor all
+  the way to the edge of the screen.
