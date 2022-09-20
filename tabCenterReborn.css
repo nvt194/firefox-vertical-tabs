@@ -1,3 +1,4 @@
+
 /* Overwrite some colours */
 :root {
     --tab-separator: transparent;
@@ -126,7 +127,7 @@ body {
     }
 
     /* Move favicon to right when hovering to accomodate for the close button */
-    /*#tablist .tab:hover > .tab-meta-image {
+    #tablist .tab:hover > .tab-meta-image {
         padding-left: 25px;
         transition: all 0.2s ease;
     }
