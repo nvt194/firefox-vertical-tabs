@@ -198,31 +198,44 @@ body {
     }
 }
 
-/* nicer icons for overflow */
+/* Use mask for overflow instead of shadows */
+.can-scroll-top #tablist {
+    mask: linear-gradient(transparent, black 40px);
+}
+.can-scroll-bottom #tablist {
+    mask: linear-gradient(black calc(100% - 40px), transparent);
+}
+.can-scroll-bottom.can-scroll-top #tablist {
+    mask: linear-gradient(transparent, black 40px calc(100% - 40px), transparent);
+}
 #topshadow, #bottomshadow {
-    box-shadow: none;
-    border: 1px solid transparent;
+    display: none;
 }
 
-#topshadow::after, #bottomshadow::after {
-    content: "";
-    width: 5px;
-    height: 5px;
-    position: absolute;
-    left: 50%;
-    background: transparent;
-    border-bottom: 1px solid var(--overflow-indicator-border);
-    border-right: 1px solid var(--overflow-indicator-border);
+/* Prevent showing scrollbar when adding/removing tabs */
+#tablist-wrapper:not(.can-scroll-bottom):not(.can-scroll-top) #tablist {
+    overflow: hidden;
 }
 
-#topshadow::after {
-    top: 0;
-    transform: translateX(-50%) rotate(-135deg);
+/*** Prevent Favicon-only pinned tabs from wrapping ***/
+#pinnedtablist.compact {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 2px;
 }
-
-#bottomshadow::after {
-    bottom: 0;
-    transform: translateX(-50%) rotate(45deg);
+#pinnedtablist.compact:not(:hover):not(:focus-within) { /* Prevent scrollbar from showing when transitioning */
+    scrollbar-width: none;
+}
+#pinnedtablist.compact .tab {
+    min-width: 36px;
+}
+@media (max-width: 48px) {
+    #pinnedtablist.compact {
+        overflow-x: clip /* Clip always makes it reset scroll position */
+    }
+    #pinnedtablist.compact .tab.active {
+        order: -1
+    }
 }
 
 /*** Better support for non-compact mode ***/
