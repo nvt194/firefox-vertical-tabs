@@ -58,9 +58,10 @@ body {
 
 #tablist-wrapper {
     height: auto;
-    margin-inline: 6px;
-    /* adds margin above tabs to make the spacing even */
-    margin-top: 5px;
+    padding-right: 5px;
+    border-right: 1px solid var(--tablist-separator);
+    /* adds padding above tabs to make the spacing even */
+    padding-top: 5px;
 }
 
 /* fix glitch with spacing in-between pinned tabs */
@@ -69,7 +70,8 @@ body {
     flex-direction: column;
 }
 
-#tablist-wrapper::after {
+#tablist-wrapper::after,
+#pinnedtablist:not(.compact):has(*)::after {
     content: "";
     margin: 2px 0;
     border: 1px solid var(--tablist-separator);
@@ -150,7 +152,7 @@ body {
     }
 
     /* Fix title gradient */
-    /*#tablist .tab:hover > .tab-title-wrapper {
+    #tablist .tab:hover > .tab-title-wrapper {
         mask-image: linear-gradient(to left, transparent 0, black 2em);
     }
 
